@@ -13,6 +13,7 @@ const dir = new Vector3();
 const CHASE_DIST = 1.85;
 /** Fraction of the screen width the globe is shifted right in the split layout. */
 const SPLIT_SHIFT = 0.2;
+const MOBILE_PULLBACK = 0.9;
 let offset = 0;
 let offsetY = 0;
 let lastOffset = -1;
@@ -43,6 +44,9 @@ export function CameraRig({ parallax = true }: { parallax?: boolean }) {
       target.y -= sceneRig.pointerY * 0.03;
       target.normalize();
     }
+
+    // Phones are portrait: the same distance crops the globe, so back off with the aspect.
+    if (size.width < 1024) want *= 1 + (1 - Math.min(1, size.width / size.height)) * (want > 3 ? MOBILE_PULLBACK : MOBILE_PULLBACK / 2);
 
     const k = 1 - Math.exp(-dt * (sceneRig.chase ? 4.5 : 3.2));
     const cur = camera.position.length();

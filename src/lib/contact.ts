@@ -1,9 +1,10 @@
 import { CONTACT } from "@/content";
 
+
 export { mailHref, telHref, waHref } from "./links";
 
-export const mapsUrl = () =>
-  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(CONTACT.address)}`;
+export const mapsUrl = (address: string) =>
+  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
 
 /** Only channels the client has confirmed (non-empty). Empty = the CTA is not rendered anywhere. */
 export const channels = () => ({

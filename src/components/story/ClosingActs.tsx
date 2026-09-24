@@ -83,13 +83,20 @@ function ContactBlock() {
     <section id="contact" ref={ref} className="mx-auto max-w-4xl px-4 pb-28 pt-8 sm:px-6 lg:px-8">
       <Reveal>
         <GlassPanel>
-          <Eyebrow>Contact</Eyebrow>
-          <address className="mt-3 text-lg not-italic leading-relaxed text-white">{CONTACT.address}</address>
-          <div className="mt-6 flex flex-wrap gap-3">
+          <Eyebrow>Our Offices</Eyebrow>
+          <div className="mt-3 grid gap-6 sm:grid-cols-2">
+            {CONTACT.offices.map((o) => (
+              <address key={o.name} className="text-lg not-italic leading-relaxed text-white">
+                <span className="block font-medium text-brass-400">{o.name}</span>
+                {o.address}
+                <a className="mt-2 block text-sm text-brass-400 hover:text-brass-100" href={mapsUrl(o.address)} target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+              </address>
+            ))}
+          </div>
+          <div className="mt-6 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap [&>*:last-child:nth-child(odd)]:col-span-2 sm:[&>*:last-child:nth-child(odd)]:col-span-1">
             {ch.phone && <Button href={telHref(ch.phone)} variant="outline">Call</Button>}
             {ch.whatsapp && <Button href={waHref(ch.whatsapp)} variant="outline">WhatsApp</Button>}
             {ch.email && <Button href={mailHref(ch.email)} variant="outline">Email</Button>}
-            <Button href={mapsUrl()} variant="outline">Open in Google Maps</Button>
           </div>
         </GlassPanel>
       </Reveal>

@@ -133,13 +133,16 @@ export const FINAL_CTA = {
   cta: { label: "Book a Consultation", href: "/contact/" },
 } as const;
 
-/** S4.14 — address only; everything else stays empty until the client confirms it. */
-export const CONTACT: { address: string; phone: string; email: string; whatsapp: string; origin: { lat: number; lon: number } } = {
-  address: "Shop No. 110, 1st Floor, Maruti Vatika, Jageetpur Road, Kankhal, Haridwar, Uttarakhand – 249408",
+/** S4.14 — two offices plus the phone / email / WhatsApp the client supplied. */
+export const CONTACT: { offices: readonly { name: string; address: string }[]; phone: string; email: string; whatsapp: string; origin: { lat: number; lon: number } } = {
+  offices: [
+    { name: "Dehradun Office", address: "ATS Arcade, First Floor, Shop No. 09, Sahastradhara Road, Dehradun, Uttarakhand – 248001" },
+    { name: "Haridwar Office", address: "Shop No. 110, First Floor, Maruti Vatika, Jageetpur Road, Kankhal, Haridwar, Uttarakhand – 249408" },
+  ],
   phone: "+91 8679803995",
   email: "jmglobaloverseas@gmail.com",
-  // Not confirmed as a WhatsApp number — leave empty until the client says so.
-  whatsapp: "",
+  // Client asked for a WhatsApp button on this number.
+  whatsapp: "+91 8679803995",
   /** Office origin for the 3D routes (Kankhal, Haridwar) — geography, not a claim. */
   origin: { lat: 29.9457, lon: 78.1642 },
 };

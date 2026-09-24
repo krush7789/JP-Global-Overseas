@@ -20,7 +20,7 @@ export function Header() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-navy-950/70 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-navy-950/85 backdrop-blur-md lg:bg-navy-950/70">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-4 sm:px-6 lg:px-8">
         <Link href="/" className="whitespace-nowrap font-display text-lg tracking-wide text-white">
           {BRAND.replace(" OVERSEAS", "")} <span className="text-brass-400">OVERSEAS</span>

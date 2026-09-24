@@ -14,7 +14,8 @@ assert.equal(c.ROUTES.length, 17);
 assert.equal(c.TESTIMONIALS.length, 0);
 assert.equal(c.TRAINING_PROGRAMS.length, 0);
 assert.ok(c.LEGAL.every((l) => l.body === ""));
-assert.equal(c.CONTACT.whatsapp, ""); // not confirmed as a WhatsApp number
+assert.equal(c.CONTACT.offices.length, 2);
+assert.ok(c.CONTACT.whatsapp.replace(/D/g, "").length >= 10);
 assert.match(c.CONTACT.email, /^[^\s@]+@[^\s@]+\.[^\s@]+$/);
 assert.ok(c.CONTACT.phone.replace(/\D/g, "").length >= 10);
 
