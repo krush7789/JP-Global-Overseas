@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+/* Navy/white base, one restrained brass accent (blueprint S14). Single source of truth
+   for colour — components use these tokens, never raw hex. */
+@theme {
+  --color-navy-950: #060f1f;
+  --color-navy-900: #0a1830;
+  --color-navy-800: #0f2340;
+  --color-navy-700: #16304f;
+  --color-paper: #f7f7f5;
+  --color-ink: #14181f;
+  --color-ink-soft: #4a5160;
+  --color-brass-600: #a9823a;
+  --color-brass-500: #c9a24b;
+  --color-brass-400: #d9bb70;
+  --color-brass-100: #f6ecd6;
+
+  --font-display: var(--font-instrument-serif), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+html {
+  background: var(--color-navy-950);
+  color: #fff;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: transparent; /* the persistent 3D scene sits behind everything */
+  min-height: 100vh;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+/* Visible focus on both the dark scene and glass panels. */
+:focus-visible {
+  outline: 2px solid var(--color-brass-400);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--color-brass-500);
+  color: var(--color-navy-950);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
