@@ -56,3 +56,10 @@ h1, h2, h3 {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Phones/tablets only: copy sits over the live globe, so give it a soft halo. */
+@media (max-width: 1023px) {
+  main h1, main h2, main h3, main p, main li, main address {
+    text-shadow: 0 1px 14px rgba(6, 15, 31, 0.9), 0 0 3px rgba(6, 15, 31, 0.55);
+  }
+}

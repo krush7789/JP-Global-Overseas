@@ -16,9 +16,10 @@ function Beacon({ id, lat, lon, size }: { id: string; lat: number; lon: number; 
   const grp = useRef<Group>(null);
   const phase = useMemo(() => Math.random(), []);
 
-  useFrame(({ clock, camera }) => {
-    // Keep the marker a point, not a donut, when the camera flies in close.
-    grp.current?.scale.setScalar(Math.min(1.2, Math.max(0.3, camera.position.length() / 3.4)));
+  useFrame(({ clock, camera, size: vp }) => {
+    // Keep the marker a point, not a donut, when the camera flies in close (smaller still on phones).
+    const phone = vp.width < 1024 ? 0.65 : 1;
+    grp.current?.scale.setScalar(Math.min(1.2, Math.max(0.3, camera.position.length() / 3.4)) * phone);
     const r = ring.current;
     if (!r) return;
     const hot = useSceneStore.getState().highlight === id;

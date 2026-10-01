@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Instrument_Serif } from "next/font/google";
 import { Footer } from "@/components/site/Footer";
 import { Header } from "@/components/site/Header";
+import { WhatsAppFab } from "@/components/site/WhatsAppFab";
 import { SceneRoot } from "@/components/scene/SceneRoot";
 import { SmoothScroll } from "@/lib/scroll/SmoothScroll";
 import "./globals.css";
@@ -29,6 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
+          <WhatsAppFab />
         </SmoothScroll>
       </body>
     </html>

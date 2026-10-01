@@ -76,6 +76,8 @@ export function SceneRoot() {
       <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 bg-navy-950">
         <Poster />
         {tier && tier !== "none" ? <Scene tier={tier} /> : null}
+        {/* Phones only: soft scrim so copy stays legible over bright map detail. */}
+        <div className="absolute inset-0 bg-linear-to-b from-transparent via-navy-950/20 to-navy-950/55 lg:hidden" />
       </div>
       {debug && (
         <pre className="pointer-events-none fixed bottom-2 left-2 z-[100] max-w-[92vw] whitespace-pre-wrap rounded bg-black/80 p-3 text-[11px] leading-snug text-white">

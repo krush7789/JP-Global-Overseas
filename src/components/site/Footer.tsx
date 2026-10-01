@@ -7,7 +7,7 @@ export function Footer() {
   const ch = channels();
   return (
     <footer className="border-t border-white/10 bg-navy-950/80 backdrop-blur-md">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:grid-cols-2 sm:px-6 lg:grid-cols-3 lg:px-8">
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 pb-28 pt-14 lg:pb-14 sm:grid-cols-2 sm:px-6 lg:grid-cols-3 lg:px-8">
         <div>
           <p className="font-display text-xl text-white">{BRAND}</p>
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-white/60">
@@ -28,16 +28,17 @@ export function Footer() {
         </nav>
 
         <address className="text-sm not-italic leading-relaxed text-white/70">
-          <p>{CONTACT.address}</p>
+          {CONTACT.offices.map((o) => (
+            <p key={o.name} className="mb-3">
+              <span className="block text-white">{o.name}</span>
+              {o.address}
+              <a className="mt-1 block text-brass-400 hover:text-brass-100" href={mapsUrl(o.address)} target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+            </p>
+          ))}
           <ul className="mt-3 space-y-2">
             {ch.phone && <li><a className="hover:text-brass-400" href={telHref(ch.phone)}>{ch.phone}</a></li>}
             {ch.email && <li><a className="hover:text-brass-400" href={mailHref(ch.email)}>{ch.email}</a></li>}
             {ch.whatsapp && <li><a className="hover:text-brass-400" href={waHref(ch.whatsapp)} target="_blank" rel="noopener noreferrer">WhatsApp</a></li>}
-            <li>
-              <a className="text-brass-400 hover:text-brass-100" href={mapsUrl()} target="_blank" rel="noopener noreferrer">
-                Open in Google Maps
-              </a>
-            </li>
           </ul>
         </address>
       </div>

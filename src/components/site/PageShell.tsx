@@ -31,8 +31,8 @@ export function TopicGrid({ topics }: { topics: readonly string[] }) {
     <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {topics.map((t, i) => (
         <li key={t}>
-          <GlassPanel as="article" className="flex h-full items-start gap-4 p-5 sm:p-6">
-            <span className="font-display text-2xl text-brass-400">{String(i + 1).padStart(2, "0")}</span>
+          <GlassPanel as="article" className="flex h-full items-start max-lg:items-center gap-4 p-5 sm:p-6">
+            <span className="shrink-0 font-display text-2xl text-brass-400">{String(i + 1).padStart(2, "0")}</span>
             <p className="text-sm font-medium leading-snug text-white">{t}</p>
           </GlassPanel>
         </li>
